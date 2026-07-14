@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ban1",
+    "title": "Trusted Online Pharmacy",
+    "subtitle": "Get genuine medicines delivered to your doorstep",
+    "image": "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=1200&q=80",
+    "ctaText": "Shop Now",
+    "ctaLink": "/medicines"
+  },
+  {
+    "id": "ban2",
+    "title": "Flat 20% Off on Vitamins",
+    "subtitle": "Boost your immunity today",
+    "image": "https://images.unsplash.com/photo-1550831107-1553da8c8464?w=1200&q=80",
+    "ctaText": "Explore Offers",
+    "ctaLink": "/offers"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "b1",
+    "name": "PharmaCorp",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b2",
+    "name": "HealthCare Ltd",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b3",
+    "name": "NutriLife",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b4",
+    "name": "MediCore",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b5",
+    "name": "BioGenics",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b6",
+    "name": "CardioGuard",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  },
+  {
+    "id": "b7",
+    "name": "Maaxicare Pharmaceuticals",
+    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+  }
+]

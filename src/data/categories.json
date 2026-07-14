@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c1",
+    "name": "Diabetes Care",
+    "slug": "diabetes-care",
+    "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=300&q=80"
+  },
+  {
+    "id": "c2",
+    "name": "Heart Care",
+    "slug": "heart-care",
+    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=300&q=80"
+  },
+  {
+    "id": "c3",
+    "name": "Fever & Pain",
+    "slug": "fever-pain",
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&q=80"
+  },
+  {
+    "id": "c4",
+    "name": "Cold & Cough",
+    "slug": "cold-cough",
+    "image": "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=300&q=80"
+  },
+  {
+    "id": "c5",
+    "name": "Baby Care",
+    "slug": "baby-care",
+    "image": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=300&q=80"
+  },
+  {
+    "id": "c6",
+    "name": "Personal Care",
+    "slug": "personal-care",
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&q=80"
+  },
+  {
+    "id": "c7",
+    "name": "Skin Care",
+    "slug": "skin-care",
+    "image": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=300&q=80"
+  },
+  {
+    "id": "c8",
+    "name": "Vitamins & Supplements",
+    "slug": "vitamins-supplements",
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80"
+  },
+  {
+    "id": "c9",
+    "name": "Women's Health",
+    "slug": "womens-health",
+    "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80"
+  },
+  {
+    "id": "c10",
+    "name": "Allergies",
+    "slug": "allergies",
+    "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=300&q=80"
+  },
+  {
+    "id": "c11",
+    "name": "Gastroenterology",
+    "slug": "gastroenterology",
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&q=80"
+  },
+  {
+    "id": "c12",
+    "name": "Bone & Joint Health",
+    "slug": "bone-joint-health",
+    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=300&q=80"
+  }
+]

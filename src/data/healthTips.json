@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ht1",
+    "title": "How to Prevent the Common Cold",
+    "excerpt": "Simple steps like washing hands and staying hydrated can go a long way.",
+    "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&q=80",
+    "date": "2023-10-15"
+  },
+  {
+    "id": "ht2",
+    "title": "Managing Diabetes through Diet",
+    "excerpt": "A balanced diet is crucial for maintaining healthy blood sugar levels.",
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80",
+    "date": "2023-11-02"
+  },
+  {
+    "id": "ht3",
+    "title": "The Importance of Vitamin D",
+    "excerpt": "Why you need it and how to get enough from sunlight and supplements.",
+    "image": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=400&q=80",
+    "date": "2023-12-05"
+  },
+  {
+    "id": "ht4",
+    "title": "Tips for a Healthy Heart",
+    "excerpt": "Exercise, stress management, and heart-healthy foods.",
+    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&q=80",
+    "date": "2024-01-20"
+  }
+]
