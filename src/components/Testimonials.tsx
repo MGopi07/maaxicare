@@ -94,7 +94,7 @@ export default function Testimonials() {
             {reviews.map(review => (
               <div 
                 key={review.id} 
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center md:snap-start"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-center md:snap-start flex"
               >
                 <ReviewCard review={review} />
               </div>

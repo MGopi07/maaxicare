@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import MedicineCard from "./MedicineCard";
 import medicinesData from "@/data/medicines.json";
 
@@ -20,49 +20,59 @@ export default function BestSellers() {
     .slice(0, 5);
 
   return (
-    <section className="py-16 bg-white border-t border-slate-100">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-20 bg-white border-t border-slate-100 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header Section */}
-        <div className="flex items-start justify-between mb-6 sm:mb-8 gap-4">
-          <div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-[#0f172a] mb-1 sm:mb-2 tracking-tight">Best Sellers</h2>
-            <p className="text-slate-500 text-sm max-w-[200px] sm:max-w-none leading-snug">Browse our best sellers that matter to you</p>
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 font-semibold text-xs mb-4 border border-blue-100 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5" />
+              Trending Now
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">Best Sellers</h2>
+            <p className="text-slate-500 text-base md:text-lg">Discover our most popular health and wellness products, chosen by our community.</p>
           </div>
-          <Link href="/medicines" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all text-sm shrink-0 mt-1 sm:mt-0">
-            View All <ArrowRight className="h-4 w-4" />
+          <Link href="/medicines" className="group inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl hover:border-primary hover:text-primary hover:shadow-md transition-all text-sm shrink-0">
+            View All Products
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Custom Tabs UI (Horizontally scrollable on mobile) */}
-        <div className="flex overflow-x-auto gap-2 sm:gap-3 mb-8 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0" style={{ scrollbarWidth: 'none' }}>
-          {categories.map((category) => {
-            const isActive = activeTab === category;
-            return (
-              <div key={category} className="relative shrink-0">
+        {/* Custom Tabs UI */}
+        <div className="flex overflow-x-auto gap-2 mb-10 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60 w-max shadow-sm">
+            {categories.map((category) => {
+              const isActive = activeTab === category;
+              return (
                 <button
+                  key={category}
                   onClick={() => setActiveTab(category)}
-                  className={`px-5 sm:px-7 py-2.5 rounded-lg text-[13px] sm:text-sm font-semibold transition-all duration-200 ${
+                  className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 relative ${
                     isActive 
-                      ? "bg-[#1a2e4a] text-white shadow-md" 
-                      : "bg-[#f4f7fb] text-[#334b6c] hover:bg-[#e6edf5]"
+                      ? "text-slate-900 shadow-sm bg-white" 
+                      : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
                   }`}
                 >
                   {category}
                 </button>
-                {/* Active indicator triangle */}
-                {isActive && (
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-[#1a2e4a]"></div>
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {displayMedicines.map((medicine: any) => (
-            <div key={medicine.id} className="animate-in fade-in zoom-in-95 duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 xl:gap-6">
+          {displayMedicines.map((medicine: any, idx: number) => (
+            <div 
+              key={`${medicine.id}-${activeTab}-${idx}`} 
+              className="animate-in fade-in zoom-in-95 duration-500 fill-mode-both"
+              style={{ animationDelay: `${idx * 75}ms` }}
+            >
                <MedicineCard medicine={medicine} />
             </div>
           ))}
