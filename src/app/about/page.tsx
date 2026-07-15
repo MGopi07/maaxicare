@@ -184,10 +184,10 @@ export default function AboutPage() {
               <h2 className="text-4xl lg:text-5xl font-black mb-6">Ready to experience better healthcare?</h2>
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto font-light">Join thousands of satisfied customers who trust Maaxicare with their daily health and wellness needs.</p>
               <Link 
-                href="/medicines" 
+                href="/products"
                 className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
               >
-                Explore Medicines
+                Explore Products
                 <ChevronRight className="w-5 h-5" />
               </Link>
             </div>

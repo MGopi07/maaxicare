@@ -37,7 +37,7 @@ export default function BestSellers() {
             <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">Best Sellers</h2>
             <p className="text-slate-500 text-base md:text-lg">Discover our most popular health and wellness products, chosen by our community.</p>
           </div>
-          <Link href="/medicines" className="group inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl hover:border-primary hover:text-primary hover:shadow-md transition-all text-sm shrink-0">
+          <Link href="/products" className="group inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl hover:border-primary hover:text-primary hover:shadow-md transition-all text-sm shrink-0">
             View All Products
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>

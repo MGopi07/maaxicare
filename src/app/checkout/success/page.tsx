@@ -35,7 +35,7 @@ export default function OrderSuccessPage() {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/medicines" className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2">
+          <Link href="/products" className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2">
             Continue Shopping <ArrowRight className="h-5 w-5" />
           </Link>
           <Link href="/" className="w-full sm:w-auto bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-8 py-4 rounded-full font-bold transition-all">

@@ -31,7 +31,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
       </button>
 
       {/* Image */}
-      <Link href={`/medicines/${medicine.slug}`} className="relative h-56 w-full bg-slate-50 overflow-hidden block">
+      <Link href={`/products/${medicine.slug}`} className="relative h-56 w-full bg-slate-50 overflow-hidden block">
         <Image 
           src={medicine.image} 
           alt={medicine.name} 
@@ -45,7 +45,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
       {/* Content */}
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-2">
-           <Link href={`/categories/${medicine.categoryId}`} className="text-[11px] text-primary font-bold uppercase tracking-wider hover:text-blue-700 transition-colors">
+           <Link href="/products" className="text-[11px] text-primary font-bold uppercase tracking-wider hover:text-blue-700 transition-colors">
              {medicine.category}
            </Link>
            <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded text-amber-600">
@@ -54,7 +54,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
            </div>
         </div>
         
-        <Link href={`/medicines/${medicine.slug}`} className="font-bold text-slate-900 mb-1.5 line-clamp-2 hover:text-primary transition-colors leading-snug">
+        <Link href={`/products/${medicine.slug}`} className="font-bold text-slate-900 mb-1.5 line-clamp-2 hover:text-primary transition-colors leading-snug">
           {medicine.name}
         </Link>
         

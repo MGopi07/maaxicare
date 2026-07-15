@@ -27,7 +27,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">Shop by Category</h2>
-            <Link href="/categories" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all">
+            <Link href="/products" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all">
               View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -70,7 +70,7 @@ export default function Home() {
                 Start your health journey today. Use code <span className="font-bold text-blue-700 bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-200/50 mx-1">HEALTH20</span> at checkout to claim your discount.
               </p>
               
-              <Link href="/medicines" className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full shadow-[0_8px_20px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+              <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full shadow-[0_8px_20px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 group">
                 Shop Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -92,7 +92,7 @@ export default function Home() {
                      </div>
                      <div>
                        <p className="text-xs text-slate-500 font-medium">Genuine</p>
-                       <p className="text-sm font-bold text-slate-800">Medicines</p>
+                       <p className="text-sm font-bold text-slate-800">Products</p>
                      </div>
                    </div>
                  </div>

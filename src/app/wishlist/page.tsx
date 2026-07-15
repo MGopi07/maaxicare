@@ -17,8 +17,8 @@ export default function WishlistPage() {
         </div>
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Your wishlist is empty</h2>
         <p className="text-slate-500 mb-8 text-center max-w-md">Save items you like in your wishlist to review or buy them later.</p>
-        <Link href="/medicines" className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all">
-          Explore Medicines
+        <Link href="/products" className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all">
+          Explore Products
         </Link>
       </div>
     );

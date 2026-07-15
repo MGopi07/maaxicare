@@ -20,7 +20,7 @@ export default function CartPage() {
         </div>
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Your cart is empty</h2>
         <p className="text-slate-500 mb-8 text-center max-w-md">Looks like you haven't added any medicines or healthcare products to your cart yet.</p>
-        <Link href="/medicines" className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all">
+        <Link href="/products" className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all">
           Start Shopping
         </Link>
       </div>
@@ -54,7 +54,7 @@ export default function CartPage() {
                         <Image src={item.medicine.image} alt={item.medicine.name} fill sizes="100px" className="object-contain p-2" />
                       </div>
                       <div className="flex-1">
-                        <Link href={`/medicines/${item.medicine.slug}`} className="font-bold text-slate-900 hover:text-primary transition-colors line-clamp-1 mb-1">
+                        <Link href={`/products/${item.medicine.slug}`} className="font-bold text-slate-900 hover:text-primary transition-colors line-clamp-1 mb-1">
                           {item.medicine.name}
                         </Link>
                         <p className="text-xs text-slate-500 mb-2">{item.medicine.category}</p>

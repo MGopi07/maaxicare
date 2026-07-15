@@ -35,7 +35,7 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
         <div className="flex items-center gap-2 text-sm text-slate-500 mb-8 overflow-x-auto whitespace-nowrap pb-2">
           <Link href="/" className="hover:text-primary">Home</Link>
           <ChevronRight className="h-4 w-4" />
-          <Link href="/medicines" className="hover:text-primary">Medicines</Link>
+          <Link href="/products" className="hover:text-primary">Products</Link>
           <ChevronRight className="h-4 w-4" />
           <Link href={`/categories/${medicine.categoryId}`} className="hover:text-primary">{medicine.category}</Link>
           <ChevronRight className="h-4 w-4" />
@@ -226,7 +226,7 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
         {/* Related Medicines */}
         {relatedMedicines.length > 0 && (
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-8">Related Medicines</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-8">Related Products</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedMedicines.map((m) => (
                 <MedicineCard key={m.id} medicine={m as any} />

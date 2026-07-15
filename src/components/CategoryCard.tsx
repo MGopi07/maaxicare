@@ -10,7 +10,7 @@ interface Category {
 
 export default function CategoryCard({ category }: { category: Category }) {
   return (
-    <Link href={`/categories/${category.slug}`} className="group block">
+    <Link href="/products" className="group block">
       <div className="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 overflow-hidden h-full flex flex-col group-hover:-translate-y-1">
         <div className="relative w-full aspect-[4/3] bg-slate-50 overflow-hidden">
           <Image
