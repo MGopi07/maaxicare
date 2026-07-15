@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Search, ShoppingCart, Heart, User, Menu, X, Pill } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -8,6 +9,16 @@ import { useCart } from "@/context/CartContext";
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cartCount } = useCart();
+  const pathname = usePathname();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Medicines", href: "/medicines" },
+    { name: "Products", href: "/products" },
+    { name: "Contact", href: "/contact" },
+    { name: "About", href: "/about" },
+  ];
+
   return (
     <>
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
@@ -25,12 +36,21 @@ export default function Navbar() {
               </Link>
 
               {/* Desktop Navigation */}
-              <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-slate-600 shrink-0">
-                <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-                <Link href="/medicines" className="hover:text-primary transition-colors">Medicines</Link>
-                <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
-                <Link href="/offers" className="text-secondary hover:text-secondary-dark transition-colors">Offers</Link>
-                <Link href="/about" className="hover:text-primary transition-colors">About</Link>
+              <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium shrink-0">
+                {navLinks.map((link) => {
+                  const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                  return (
+                    <Link 
+                      key={link.name}
+                      href={link.href} 
+                      className={`transition-colors ${
+                        isActive ? "text-primary font-bold" : "text-slate-600 hover:text-primary"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
               </nav>
             </div>
 
@@ -126,11 +146,23 @@ export default function Navbar() {
 
         {/* Drawer Links */}
         <nav className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
-          <Link href="/" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-          <Link href="/medicines" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Medicines</Link>
-          <Link href="/products" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Products</Link>
-          <Link href="/offers" className="px-4 py-3 text-secondary hover:bg-secondary/5 rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Offers</Link>
-          <Link href="/about" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+          {navLinks.map((link) => {
+            const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <Link 
+                key={link.name}
+                href={link.href} 
+                className={`px-4 py-3 rounded-xl font-medium transition-colors ${
+                  isActive 
+                    ? "bg-primary/10 text-primary" 
+                    : "text-slate-700 hover:bg-primary/5 hover:text-primary"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
         
         {/* Drawer Footer */}

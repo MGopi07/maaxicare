@@ -63,12 +63,12 @@
     "id": "c11",
     "name": "Gastroenterology",
     "slug": "gastroenterology",
-    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&q=80"
+    "image": "/images/categories/gastroenterology.jpg"
   },
   {
     "id": "c12",
     "name": "Bone & Joint Health",
     "slug": "bone-joint-health",
-    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=300&q=80"
+    "image": "/images/categories/bone-joint.jpg"
   }
 ]

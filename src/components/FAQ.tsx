@@ -32,13 +32,13 @@ export default function FAQ() {
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
           <p className="text-slate-500">Got questions? We've got answers. If you can't find what you're looking for, feel free to contact us.</p>
         </div>
-        
+
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`border rounded-2xl transition-all duration-200 overflow-hidden ${isOpen ? 'border-primary/30 bg-primary/5 shadow-sm' : 'border-slate-200 hover:border-slate-300'}`}
               >
                 <button
@@ -48,7 +48,7 @@ export default function FAQ() {
                   <span className="pr-4">{faq.question}</span>
                   <ChevronDown className={`h-5 w-5 text-slate-500 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 text-primary' : ''}`} />
                 </button>
-                <div 
+                <div
                   className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
                   <p className="p-5 pt-0 text-slate-600 leading-relaxed text-sm">

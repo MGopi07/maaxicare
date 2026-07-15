@@ -20,7 +20,7 @@ export default function BestSellers() {
     .slice(0, 5);
 
   return (
-    <section className="py-20 bg-white border-t border-slate-100 relative overflow-hidden">
+    <section className="py-20 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />

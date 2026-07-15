@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Stethoscope, Users, Smartphone } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
@@ -46,43 +46,100 @@ const slides = [
 
 export default function HeroBanner() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance (in pixels)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touch end to prevent false positives
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide]); // Added currentSlide dependency to reset timer on manual change
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
     <div className="bg-white pb-12 pt-6">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Slider Container */}
-        <div className="relative w-full rounded-2xl overflow-hidden shadow-sm h-[380px] sm:h-[400px] lg:h-[480px]">
+        <div
+          className="relative w-full rounded-2xl overflow-hidden shadow-sm h-[380px] sm:h-[400px] lg:h-[480px] group"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+
+          {/* Manual Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/50 backdrop-blur hover:bg-white text-slate-800 shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/50 backdrop-blur hover:bg-white text-slate-800 shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-              } ${slide.bgClass}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                } ${slide.bgClass}`}
             >
               <div className="relative w-full h-full flex items-center justify-between">
-                
+
                 {/* Text Content */}
                 <div className="relative z-20 flex flex-col justify-center px-8 sm:px-12 lg:px-24 w-full sm:w-1/2 lg:w-[55%]">
                   <div className="bg-[#e1251b] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm w-fit mb-4 sm:mb-5 uppercase tracking-wider">
                     {slide.tag}
                   </div>
-                  
+
                   <h2 className="text-4xl sm:text-5xl lg:text-6xl text-slate-900 leading-[1.1] mb-4 tracking-tight">
-                    <span className="font-light">{slide.title1}</span> <br/>
+                    <span className="font-light">{slide.title1}</span> <br />
                     <span className="font-extrabold">{slide.title2}</span>
                   </h2>
-                  
+
                   <p className="text-slate-700 text-sm sm:text-[15px] font-medium mb-8 max-w-[260px] sm:max-w-[320px] leading-relaxed">
                     {slide.subtitle}
                   </p>
-                  
+
                   <Link
                     href={slide.buttonLink}
                     className="bg-white text-slate-900 font-extrabold text-[12px] sm:text-[13px] tracking-wide px-8 py-3.5 rounded-full w-fit hover:scale-105 transition-transform shadow-[0_4px_14px_0_rgba(0,0,0,0.05)] uppercase"
@@ -93,11 +150,11 @@ export default function HeroBanner() {
 
                 {/* Styled Product Image Section */}
                 <div className="absolute right-[-10%] sm:right-4 lg:right-20 top-1/2 -translate-y-1/2 w-[300px] sm:w-[350px] lg:w-[450px] h-[300px] sm:h-[350px] lg:h-[450px] z-10 pointer-events-none opacity-60 sm:opacity-100 flex items-center justify-center">
-                  
+
                   {/* Dynamic Splash/Glow behind the product */}
                   <div className={`absolute w-[80%] h-[80%] ${slide.splashColor} opacity-20 blur-3xl rounded-full`}></div>
                   <div className={`absolute w-[60%] h-[60%] ${slide.splashColor} opacity-30 blur-2xl rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] animate-pulse`}></div>
-                  
+
                   {/* Circular Fade Mask for Unsplash Placeholders (no harsh rectangular edges!) */}
                   <div className="relative w-[85%] h-[85%]" style={{ WebkitMaskImage: "radial-gradient(circle, black 45%, transparent 70%)", maskImage: "radial-gradient(circle, black 45%, transparent 70%)" }}>
                     <Image
@@ -122,9 +179,8 @@ export default function HeroBanner() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentSlide ? "w-6 bg-slate-800" : "w-2 bg-slate-300"
-              }`}
+              className={`h-2 rounded-full transition-all ${index === currentSlide ? "w-6 bg-slate-800" : "w-2 bg-slate-300"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
