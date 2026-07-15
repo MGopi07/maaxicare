@@ -63,10 +63,10 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
               </div>
               <div className="flex gap-4">
                 <button className="h-20 w-20 rounded-xl bg-slate-50 border-2 border-primary overflow-hidden relative">
-                  <Image src={medicine.image} alt="Thumbnail 1" fill className="object-contain p-2" />
+                  <Image src={medicine.image} alt="Thumbnail 1" fill sizes="80px" className="object-contain p-2" />
                 </button>
                 <button className="h-20 w-20 rounded-xl bg-slate-50 border border-slate-200 overflow-hidden relative opacity-70 hover:opacity-100">
-                  <Image src={medicine.image} alt="Thumbnail 2" fill className="object-contain p-2" />
+                  <Image src={medicine.image} alt="Thumbnail 2" fill sizes="80px" className="object-contain p-2" />
                 </button>
               </div>
             </div>

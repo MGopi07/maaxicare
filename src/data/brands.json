@@ -2,36 +2,36 @@
   {
     "id": "b1",
     "name": "PharmaCorp",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=200&q=80"
   },
   {
     "id": "b2",
     "name": "HealthCare Ltd",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=200&q=80"
   },
   {
     "id": "b3",
     "name": "NutriLife",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=200&q=80"
   },
   {
     "id": "b4",
     "name": "MediCore",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=200&q=80"
   },
   {
     "id": "b5",
     "name": "BioGenics",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200&q=80"
   },
   {
     "id": "b6",
     "name": "CardioGuard",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "image": "https://images.unsplash.com/photo-1577401239170-897942555fb3?w=200&q=80"
   },
   {
     "id": "b7",
-    "name": "Maaxicare Pharmaceuticals",
-    "image": "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?w=200&q=80"
+    "name": "Maaxicare Pharma",
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&q=80"
   }
 ]

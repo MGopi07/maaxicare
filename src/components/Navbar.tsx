@@ -28,7 +28,7 @@ export default function Navbar() {
               <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-slate-600 shrink-0">
                 <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                 <Link href="/medicines" className="hover:text-primary transition-colors">Medicines</Link>
-                <Link href="/categories" className="hover:text-primary transition-colors">Categories</Link>
+                <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
                 <Link href="/offers" className="text-secondary hover:text-secondary-dark transition-colors">Offers</Link>
                 <Link href="/about" className="hover:text-primary transition-colors">About</Link>
               </nav>
@@ -128,7 +128,7 @@ export default function Navbar() {
         <nav className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
           <Link href="/" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <Link href="/medicines" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Medicines</Link>
-          <Link href="/categories" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Categories</Link>
+          <Link href="/products" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Products</Link>
           <Link href="/offers" className="px-4 py-3 text-secondary hover:bg-secondary/5 rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Offers</Link>
           <Link href="/about" className="px-4 py-3 text-slate-700 hover:bg-primary/5 hover:text-primary rounded-xl font-medium transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
         </nav>

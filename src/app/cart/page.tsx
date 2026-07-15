@@ -51,7 +51,7 @@ export default function CartPage() {
                     {/* Product */}
                     <div className="col-span-6 flex items-center gap-4 w-full">
                       <div className="relative h-20 w-20 bg-slate-50 rounded-xl flex-shrink-0 flex items-center justify-center border border-slate-100 p-2">
-                        <Image src={item.medicine.image} alt={item.medicine.name} fill className="object-contain p-2" />
+                        <Image src={item.medicine.image} alt={item.medicine.name} fill sizes="100px" className="object-contain p-2" />
                       </div>
                       <div className="flex-1">
                         <Link href={`/medicines/${item.medicine.slug}`} className="font-bold text-slate-900 hover:text-primary transition-colors line-clamp-1 mb-1">

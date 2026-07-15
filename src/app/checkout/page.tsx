@@ -228,7 +228,7 @@ export default function CheckoutPage() {
                 {cart.map((item) => (
                   <div key={item.medicine.id} className="flex gap-3">
                     <div className="relative h-12 w-12 bg-slate-50 rounded-lg flex-shrink-0 border border-slate-100">
-                      <Image src={item.medicine.image} alt={item.medicine.name} fill className="object-contain p-1" />
+                      <Image src={item.medicine.image} alt={item.medicine.name} fill sizes="80px" className="object-contain p-1" />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-bold text-slate-900 line-clamp-1">{item.medicine.name}</p>

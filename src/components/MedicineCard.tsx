@@ -36,6 +36,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
           src={medicine.image} 
           alt={medicine.name} 
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
         />
       </Link>
