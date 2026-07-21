@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Pill, Mail, Phone, MapPin, Share2 } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Share2 } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -10,10 +11,13 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="bg-primary/20 p-2 rounded-xl">
-                <Pill className="h-6 w-6 text-primary" />
-              </div>
-              <span className="text-2xl font-bold text-white">Maaxicare</span>
+              <Image 
+                src="/images/logo.png" 
+                alt="Maaxicare Logo" 
+                width={150} 
+                height={50} 
+                className="h-10 w-auto object-contain" 
+              />
             </Link>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Your trusted online pharmacy. We deliver genuine medicines and healthcare products right to your doorstep with care.

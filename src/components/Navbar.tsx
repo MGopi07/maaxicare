@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Search, ShoppingCart, Heart, User, Menu, X, Pill } from "lucide-react";
+import { Search, ShoppingCart, Heart, User, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
@@ -26,12 +27,14 @@ export default function Navbar() {
             <div className="flex items-center gap-8 xl:gap-12">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-2 group shrink-0">
-                <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors">
-                  <Pill className="h-6 w-6 text-primary" />
-                </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Maaxicare
-                </span>
+                <Image 
+                  src="/images/logo.png" 
+                  alt="Maaxicare Logo" 
+                  width={150} 
+                  height={50} 
+                  className="h-10 w-auto object-contain" 
+                  priority 
+                />
               </Link>
 
               {/* Desktop Navigation */}
@@ -128,12 +131,14 @@ export default function Navbar() {
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-100">
           <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="bg-primary/10 p-1.5 rounded-lg">
-              <Pill className="h-5 w-5 text-primary" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Maaxicare
-            </span>
+            <Image 
+              src="/images/logo.png" 
+              alt="Maaxicare Logo" 
+              width={120} 
+              height={40} 
+              className="h-8 w-auto object-contain" 
+              priority 
+            />
           </Link>
           <button 
             className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors"
