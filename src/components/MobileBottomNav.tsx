@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, LayoutGrid, Mail, Phone, ChevronUp } from "lucide-react";
+import { Home, Users, LayoutGrid, Mail, Phone, ChevronUp } from "lucide-react";
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
@@ -23,11 +23,11 @@ export default function MobileBottomNav() {
             </span>
           </Link>
 
-          {/* Profile */}
-          <Link href="/profile" className="flex flex-col items-center justify-center w-16 gap-1 group">
-            <User className={`h-6 w-6 transition-colors ${pathname === "/profile" ? "text-secondary" : "text-slate-500 group-hover:text-slate-700"}`} strokeWidth={pathname === "/profile" ? 2.5 : 2} />
-            <span className={`text-[11px] font-medium transition-colors ${pathname === "/profile" ? "text-secondary" : "text-slate-500 group-hover:text-slate-700"}`}>
-              Profile
+          {/* About */}
+          <Link href="/about" className="flex flex-col items-center justify-center w-16 gap-1 group">
+            <Users className={`h-6 w-6 transition-colors ${pathname === "/about" ? "text-secondary" : "text-slate-500 group-hover:text-slate-700"}`} strokeWidth={pathname === "/about" ? 2.5 : 2} />
+            <span className={`text-[11px] font-medium transition-colors ${pathname === "/about" ? "text-secondary" : "text-slate-500 group-hover:text-slate-700"}`}>
+              About
             </span>
           </Link>
 

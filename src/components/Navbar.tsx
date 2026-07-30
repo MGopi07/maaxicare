@@ -35,6 +35,10 @@ export default function Navbar() {
                   className="h-10 w-auto object-contain" 
                   priority 
                 />
+                <span className="text-2xl font-bold tracking-tight">
+                  <span className="text-[#1e3a8a]">Maaxi</span>
+                  <span className="text-[#14b8a6]">care</span>
+                </span>
               </Link>
 
               {/* Desktop Navigation */}
@@ -139,6 +143,10 @@ export default function Navbar() {
               className="h-8 w-auto object-contain" 
               priority 
             />
+            <span className="text-xl font-bold tracking-tight">
+              <span className="text-[#1e3a8a]">Maaxi</span>
+              <span className="text-[#14b8a6]">care</span>
+            </span>
           </Link>
           <button 
             className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors"
