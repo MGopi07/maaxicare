@@ -45,7 +45,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
       {/* Content */}
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-2">
-           <Link href="/products" className="text-[11px] text-primary font-bold uppercase tracking-wider hover:text-blue-700 transition-colors">
+           <Link href="/products" className="text-[11px] text-primary font-bold uppercase tracking-wider hover:text-primary-dark transition-colors">
              {medicine.category}
            </Link>
            <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded text-amber-600">
@@ -72,7 +72,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
           </div>
           <button 
             onClick={(e) => { e.preventDefault(); addToCart(medicine); }}
-            className="group/btn h-10 w-10 shrink-0 bg-slate-900 text-white hover:bg-primary rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1"
+            className="group/btn h-10 w-10 shrink-0 bg-primary text-white hover:bg-primary-dark rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1"
             aria-label="Add to cart"
           >
             <ShoppingCart className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />

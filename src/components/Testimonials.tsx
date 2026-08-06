@@ -71,14 +71,14 @@ export default function Testimonials() {
           <div className="hidden md:flex gap-3 shrink-0">
             <button 
               onClick={() => scroll('left')} 
-              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-blue-600 transition-colors shadow-sm"
+              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-primary transition-colors shadow-sm"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={() => scroll('right')} 
-              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-blue-600 transition-colors shadow-sm"
+              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-primary transition-colors shadow-sm"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
@@ -105,13 +105,13 @@ export default function Testimonials() {
         <div className="flex md:hidden justify-center gap-4 mt-2">
             <button 
               onClick={() => scroll('left')} 
-              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-blue-600 transition-colors shadow-sm"
+              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-primary transition-colors shadow-sm"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={() => scroll('right')} 
-              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-blue-600 transition-colors shadow-sm"
+              className="p-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 hover:text-primary transition-colors shadow-sm"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

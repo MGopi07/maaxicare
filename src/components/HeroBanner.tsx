@@ -15,8 +15,8 @@ const slides = [
     buttonText: "SHOP NOW",
     buttonLink: "/categories/vitamins",
     image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80",
-    bgClass: "bg-gradient-to-br from-[#fcf5ef] to-[#f4e2d3]",
-    splashColor: "bg-orange-500",
+    bgClass: "bg-gradient-to-br from-primary/5 to-primary/10",
+    splashColor: "bg-primary",
   },
   {
     id: 2,
@@ -27,8 +27,8 @@ const slides = [
     buttonText: "ORDER NOW",
     buttonLink: "/products",
     image: "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=800&q=80",
-    bgClass: "bg-gradient-to-br from-[#f0f7ff] to-[#dbeafe]",
-    splashColor: "bg-blue-500",
+    bgClass: "bg-gradient-to-br from-secondary/5 to-secondary/10",
+    splashColor: "bg-secondary",
   },
   {
     id: 3,
@@ -39,8 +39,8 @@ const slides = [
     buttonText: "EXPLORE",
     buttonLink: "/categories/personal-care",
     image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80",
-    bgClass: "bg-gradient-to-br from-[#f0fdf4] to-[#dcfce7]",
-    splashColor: "bg-emerald-500",
+    bgClass: "bg-gradient-to-br from-primary/5 to-primary/10",
+    splashColor: "bg-primary-dark",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function HeroBanner() {
 
                 {/* Text Content */}
                 <div className="relative z-20 flex flex-col justify-center px-8 sm:px-12 lg:px-24 w-full sm:w-1/2 lg:w-[55%]">
-                  <div className="bg-[#e1251b] text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm w-fit mb-4 sm:mb-5 uppercase tracking-wider">
+                  <div className="bg-secondary text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-sm w-fit mb-4 sm:mb-5 uppercase tracking-wider">
                     {slide.tag}
                   </div>
 

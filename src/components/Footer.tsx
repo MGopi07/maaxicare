@@ -10,18 +10,15 @@ export default function Footer() {
           
           {/* Company Info */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
+            <Link href="/" className="inline-block mb-6 bg-white p-1.5 rounded-lg">
               <Image 
                 src="/images/logo.png" 
                 alt="Maaxicare Logo" 
-                width={150} 
-                height={50} 
-                className="h-10 w-auto object-contain" 
+                width={180} 
+                height={60} 
+                className="h-10 sm:h-12 w-auto object-contain" 
+                style={{ width: 'auto' }}
               />
-              <span className="text-2xl font-bold tracking-tight">
-                <span className="text-white">Maaxi</span>
-                <span className="text-[#14b8a6]">care</span>
-              </span>
             </Link>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Your trusted online pharmacy. We deliver genuine medicines and healthcare products right to your doorstep with care.

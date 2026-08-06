@@ -22,7 +22,7 @@ export default function BestSellers() {
   return (
     <section className="py-20 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -30,7 +30,7 @@ export default function BestSellers() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 font-semibold text-xs mb-4 border border-blue-100 shadow-sm">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs mb-4 border border-primary/20 shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
               Trending Now
             </div>

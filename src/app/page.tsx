@@ -45,32 +45,32 @@ export default function Home() {
       {/* Discount Banner */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="bg-[#f4f7ff] rounded-[2.5rem] p-8 lg:p-14 flex flex-col md:flex-row items-center justify-between relative overflow-hidden border border-blue-50/80">
+          <div className="bg-[#f4f7ff] rounded-[2.5rem] p-8 lg:p-14 flex flex-col md:flex-row items-center justify-between relative overflow-hidden border border-primary/20">
             {/* Bright Decorative Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[70%] rounded-full bg-gradient-to-br from-blue-300/30 to-indigo-300/30 blur-[80px]" />
-              <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[60%] rounded-full bg-gradient-to-tr from-emerald-300/30 to-teal-300/30 blur-[80px]" />
+              <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[70%] rounded-full bg-gradient-to-br from-primary/30 to-primary-dark/30 blur-[80px]" />
+              <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[60%] rounded-full bg-gradient-to-tr from-secondary/30 to-secondary-dark/30 blur-[80px]" />
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
             </div>
 
             <div className="relative z-10 max-w-xl text-center md:text-left mb-10 md:mb-0 md:pr-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-blue-100 mb-6 text-blue-700 font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-primary/20 mb-6 text-primary font-semibold text-sm">
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/50 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                 </span>
                 Limited Time Offer
               </div>
               
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 text-slate-900 leading-[1.15] tracking-tight">
-                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">20% Off</span> on<br/> Your First Order!
+                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">20% Off</span> on<br/> Your First Order!
               </h2>
               
               <p className="text-slate-600 text-base sm:text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
-                Start your health journey today. Use code <span className="font-bold text-blue-700 bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-200/50 mx-1">HEALTH20</span> at checkout to claim your discount.
+                Start your health journey today. Use code <span className="font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-lg border border-primary/20 mx-1">HEALTH20</span> at checkout to claim your discount.
               </p>
               
-              <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full shadow-[0_8px_20px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 group">
+              <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-full shadow-[0_8px_20px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.2)] hover:-translate-y-1 hover:bg-primary-dark transition-all duration-300 group">
                 Shop Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -87,7 +87,7 @@ export default function Home() {
                  {/* Floating Elements */}
                  <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 animate-bounce" style={{ animationDuration: '4s' }}>
                    <div className="flex items-center gap-3">
-                     <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
+                     <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold">
                        ✓
                      </div>
                      <div>
@@ -97,7 +97,7 @@ export default function Home() {
                    </div>
                  </div>
                  
-                 <div className="absolute -top-4 -right-4 z-0 w-24 h-24 bg-blue-500 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+                 <div className="absolute -top-4 -right-4 z-0 w-24 h-24 bg-primary rounded-full blur-2xl opacity-40 animate-pulse"></div>
                </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* Popular Brands (Slider) */}
-      <section className="py-16 bg-gradient-to-r from-blue-50/80 via-white to-blue-50/80 border-y border-blue-100/50 overflow-hidden relative">
+      <section className="py-16 bg-gradient-to-r from-primary/5 via-white to-primary/5 border-y border-primary/10 overflow-hidden relative">
         <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         <div className="absolute top-1/2 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="container mx-auto px-4 lg:px-8 mb-10">
@@ -127,8 +127,8 @@ export default function Home() {
 
       {/* Health Tips */}
       <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight">Health Tips & Articles</h2>

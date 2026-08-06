@@ -8,24 +8,24 @@ export default function TrustBadges() {
       titleMobile: "10L+ Customers",
       titleDesktop: "10L+ Customers",
       description: "Trust us for their health needs daily",
-      bgClasses: "bg-[#f0f6ff] sm:bg-gradient-to-br sm:from-blue-50 sm:to-blue-100 sm:group-hover:from-blue-500 sm:group-hover:to-blue-600 sm:shadow-blue-200/50",
-      iconClasses: "text-slate-600 sm:text-blue-600 sm:group-hover:text-white"
+      bgClasses: "bg-primary/5 sm:bg-gradient-to-br sm:from-primary/10 sm:to-primary/20 sm:group-hover:from-primary sm:group-hover:to-primary-dark sm:shadow-primary/50",
+      iconClasses: "text-primary sm:group-hover:text-white"
     },
     {
       icon: Stethoscope,
       titleMobile: "High Quality\nIngredients",
       titleDesktop: "High Quality Ingredients",
       description: "100% authentic and verified products",
-      bgClasses: "bg-[#f0f6ff] sm:bg-gradient-to-br sm:from-emerald-50 sm:to-emerald-100 sm:group-hover:from-emerald-500 sm:group-hover:to-emerald-600 sm:shadow-emerald-200/50",
-      iconClasses: "text-slate-600 sm:text-emerald-600 sm:group-hover:text-white"
+      bgClasses: "bg-secondary/5 sm:bg-gradient-to-br sm:from-secondary/10 sm:to-secondary/20 sm:group-hover:from-secondary sm:group-hover:to-secondary-dark sm:shadow-secondary/50",
+      iconClasses: "text-secondary sm:group-hover:text-white"
     },
     {
       icon: Users,
       titleMobile: "Trusted by Men",
       titleDesktop: "Trusted by Men",
       description: "Recommended by healthcare experts",
-      bgClasses: "bg-[#f0f6ff] sm:bg-gradient-to-br sm:from-indigo-50 sm:to-indigo-100 sm:group-hover:from-indigo-500 sm:group-hover:to-indigo-600 sm:shadow-indigo-200/50",
-      iconClasses: "text-slate-600 sm:text-indigo-600 sm:group-hover:text-white"
+      bgClasses: "bg-primary/5 sm:bg-gradient-to-br sm:from-primary/10 sm:to-primary/20 sm:group-hover:from-primary sm:group-hover:to-primary-dark sm:shadow-primary/50",
+      iconClasses: "text-primary sm:group-hover:text-white"
     }
   ];
 

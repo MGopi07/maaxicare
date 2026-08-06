@@ -161,7 +161,7 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
         {/* Info Tabs */}
         <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-16">
           <div className="flex overflow-x-auto border-b border-slate-100 hide-scrollbar">
-            {['description', 'ingredients', 'how-to-use', 'side-effects'].map((tab) => (
+            {['description', 'ingredients', 'how-to-use', 'advantages'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -183,12 +183,6 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">Product Overview</h3>
                 <p className="mb-6">{medicine.description}</p>
-                <h4 className="font-semibold text-slate-900 mb-2">Key Benefits</h4>
-                <ul className="list-disc pl-5 space-y-2">
-                  {medicine.benefits.map((benefit, i) => (
-                    <li key={i}>{benefit}</li>
-                  ))}
-                </ul>
               </div>
             )}
             {activeTab === "ingredients" && (
@@ -209,13 +203,13 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
                 <p className="bg-slate-50 p-4 rounded-lg border border-slate-100 inline-block">{medicine.dosage}</p>
               </div>
             )}
-            {activeTab === "side-effects" && (
+            {activeTab === "advantages" && (
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Possible Side Effects</h3>
-                <p className="mb-4">While generally safe, you may experience some of the following side effects. Consult a doctor if they persist.</p>
+                {/* <h3 className="text-xl font-bold text-slate-900 mb-4">Advantages</h3> */}
+                <p className="mb-4">Here are the key advantages of this product:</p>
                 <ul className="list-disc pl-5 space-y-2">
-                  {medicine.sideEffects.map((effect, i) => (
-                    <li key={i}>{effect}</li>
+                  {medicine.benefits.map((benefit, i) => (
+                    <li key={i}>{benefit}</li>
                   ))}
                 </ul>
               </div>

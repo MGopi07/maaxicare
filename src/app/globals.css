@@ -2,12 +2,12 @@
 
 @theme {
   --font-sans: var(--font-inter);
-  --color-primary: #0284c7; /* Sky 600 */
-  --color-primary-dark: #0369a1; /* Sky 700 */
-  --color-secondary: #10b981; /* Emerald 500 */
-  --color-secondary-dark: #059669; /* Emerald 600 */
+  --color-primary: #004b9c; /* Logo Blue */
+  --color-primary-dark: #003670;
+  --color-secondary: #00a859; /* Logo Green */
+  --color-secondary-dark: #008745;
   --color-background: #ffffff;
-  --color-surface: #f8fafc; /* Slate 50 */
+  --color-surface: #f8fafc;
 }
 
 @layer base {

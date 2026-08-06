@@ -30,15 +30,12 @@ export default function Navbar() {
                 <Image 
                   src="/images/logo.png" 
                   alt="Maaxicare Logo" 
-                  width={150} 
-                  height={50} 
-                  className="h-10 w-auto object-contain" 
+                  width={250} 
+                  height={80} 
+                  className="h-14 sm:h-16 w-auto object-contain" 
+                  style={{ width: 'auto' }}
                   priority 
                 />
-                <span className="text-2xl font-bold tracking-tight">
-                  <span className="text-[#1e3a8a]">Maaxi</span>
-                  <span className="text-[#14b8a6]">care</span>
-                </span>
               </Link>
 
               {/* Desktop Navigation */}
@@ -138,15 +135,12 @@ export default function Navbar() {
             <Image 
               src="/images/logo.png" 
               alt="Maaxicare Logo" 
-              width={120} 
-              height={40} 
-              className="h-8 w-auto object-contain" 
+              width={200} 
+              height={60} 
+              className="h-12 sm:h-14 w-auto object-contain" 
+              style={{ width: 'auto' }}
               priority 
             />
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-[#1e3a8a]">Maaxi</span>
-              <span className="text-[#14b8a6]">care</span>
-            </span>
           </Link>
           <button 
             className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors"
