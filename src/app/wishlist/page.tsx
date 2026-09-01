@@ -1,13 +1,29 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Heart, Trash2, ShoppingCart } from "lucide-react";
-import medicines from "@/data/medicines.json";
+import { api } from "@/services/api";
 import MedicineCard from "@/components/MedicineCard";
 
 export default function WishlistPage() {
-  // Mock wishlist data using some medicines
-  const wishlistItems = medicines.slice(1, 4);
+  const [wishlistItems, setWishlistItems] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Mock wishlist data by taking a few items from the API
+    api.products.getAll()
+      .then((res) => {
+        const data = res?.data || res || [];
+        setWishlistItems(data.slice(1, 4));
+      })
+      .catch((err) => console.error("Failed to load wishlist", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center text-slate-500 font-medium">Loading your wishlist...</div>;
+  }
 
   if (wishlistItems.length === 0) {
     return (

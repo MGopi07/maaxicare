@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { api } from "@/services/api";
 
-const slides = [
+const defaultSlides = [
   {
     id: 1,
     tag: "NEW",
@@ -45,6 +46,7 @@ const slides = [
 ];
 
 export default function HeroBanner() {
+  const [slides, setSlides] = useState<any[]>(defaultSlides);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -79,7 +81,7 @@ export default function HeroBanner() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [currentSlide]); // Added currentSlide dependency to reset timer on manual change
+  }, [currentSlide, slides.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);

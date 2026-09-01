@@ -4,7 +4,7 @@ export interface Medicine {
   slug: string;
   manufacturer: string;
   categoryId: string;
-  category: string;
+  category: string | any;
   price: number;
   discountPrice: number;
   stock: number;

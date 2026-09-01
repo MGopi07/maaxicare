@@ -1,15 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import MedicineCard from "@/components/MedicineCard";
 import { Filter, ChevronDown, Search } from "lucide-react";
-import medicines from "@/data/medicines.json";
-import categories from "@/data/categories.json";
+import { api } from "@/services/api";
 import brands from "@/data/brands.json";
+import { useSearchParams } from "next/navigation";
 
 export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading products...</div>}>
+      <ProductsContent />
+    </Suspense>
+  );
+}
+
+function ProductsContent() {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams?.get("category");
+
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [medicines, setMedicines] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    initialCategory ? [initialCategory] : []
+  );
+
+  useEffect(() => {
+    Promise.all([api.products.getAll(), api.categories.getAll()])
+      .then(([medsRes, catsRes]) => {
+        setMedicines(medsRes?.data || medsRes || []);
+        setCategories(catsRes?.data || catsRes || []);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleCategoryChange = (categoryId: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(categoryId) 
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
+
+  const filteredMedicines = medicines.filter(med => {
+    // text search filter
+    if (searchTerm && !med.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return false;
+    }
+    // category filter
+    if (selectedCategories.length > 0) {
+      const catId = typeof med.category === 'object' ? med.category?.id : med.categoryId;
+      if (!selectedCategories.includes(String(catId))) {
+        return false;
+      }
+    }
+    return true;
+  });
 
   return (
     <div className="bg-slate-50 min-h-screen py-8">
@@ -19,7 +69,7 @@ export default function ProductsPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl font-bold text-slate-900 mb-2">All Products</h1>
-            <p className="text-slate-500">Showing {medicines.length} results</p>
+            <p className="text-slate-500">Showing {filteredMedicines.length} results</p>
           </div>
           
           <div className="flex items-center gap-4">
@@ -63,7 +113,12 @@ export default function ProductsPage() {
                 <div className="space-y-3">
                   {categories.map((cat) => (
                     <label key={cat.id} className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" className="rounded border-slate-300 text-primary focus:ring-primary" />
+                      <input 
+                        type="checkbox" 
+                        className="rounded border-slate-300 text-primary focus:ring-primary" 
+                        checked={selectedCategories.includes(String(cat.id))}
+                        onChange={() => handleCategoryChange(String(cat.id))}
+                      />
                       <span className="text-sm text-slate-600 hover:text-primary">{cat.name}</span>
                     </label>
                   ))}
@@ -107,7 +162,7 @@ export default function ProductsPage() {
           {/* Product Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-              {medicines.map((medicine) => (
+              {filteredMedicines.map((medicine) => (
                 <MedicineCard key={medicine.id} medicine={medicine as any} />
               ))}
             </div>

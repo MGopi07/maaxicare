@@ -1,23 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import MedicineCard from "./MedicineCard";
-import medicinesData from "@/data/medicines.json";
-
-const categories = ["Nutrition", "Hair", "Beard", "Performance", "Hygiene", "Skin"];
+import { api } from "@/services/api";
 
 export default function BestSellers() {
-  const [activeTab, setActiveTab] = useState("Nutrition");
+  const [activeCategory, setActiveCategory] = useState<string | number>("All");
+  const [medicinesData, setMedicinesData] = useState<any[]>([]);
+  const [categoriesData, setCategoriesData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Deterministic filtering: shift the array based on the active tab index 
-  // to show UI changes without causing hydration errors (no Math.random() in render).
-  const tabIndex = categories.indexOf(activeTab);
-  const displayMedicines = [...medicinesData]
-    .slice(tabIndex * 2)
-    .concat([...medicinesData])
-    .slice(0, 5);
+  useEffect(() => {
+    Promise.all([api.products.getAll(), api.categories.getAll()])
+      .then(([medsRes, catsRes]) => {
+        setMedicinesData(medsRes?.data || medsRes || []);
+        setCategoriesData(catsRes?.data || catsRes || []);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const displayMedicines = activeCategory === "All" 
+    ? [...medicinesData].slice(0, 5) 
+    : medicinesData.filter((med: any) => {
+        const catId = typeof med.category === 'object' ? med.category?.id : med.categoryId;
+        return String(catId) === String(activeCategory);
+      }).slice(0, 5);
 
   return (
     <section className="py-20 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
@@ -46,19 +56,29 @@ export default function BestSellers() {
         {/* Custom Tabs UI */}
         <div className="flex overflow-x-auto gap-2 mb-10 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
           <div className="flex bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60 w-max shadow-sm">
-            {categories.map((category) => {
-              const isActive = activeTab === category;
+            <button
+              onClick={() => setActiveCategory("All")}
+              className={`whitespace-nowrap px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 relative ${
+                activeCategory === "All" 
+                  ? "text-slate-900 shadow-sm bg-white" 
+                  : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
+              }`}
+            >
+              All
+            </button>
+            {categoriesData.map((category) => {
+              const isActive = activeCategory === category.id;
               return (
                 <button
-                  key={category}
-                  onClick={() => setActiveTab(category)}
-                  className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 relative ${
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`whitespace-nowrap px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 relative ${
                     isActive 
                       ? "text-slate-900 shadow-sm bg-white" 
                       : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
                   }`}
                 >
-                  {category}
+                  {category.name}
                 </button>
               );
             })}
@@ -69,7 +89,7 @@ export default function BestSellers() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 xl:gap-6">
           {displayMedicines.map((medicine: any, idx: number) => (
             <div 
-              key={`${medicine.id}-${activeTab}-${idx}`} 
+              key={`${medicine.id}-${activeCategory}-${idx}`} 
               className="animate-in fade-in zoom-in-95 duration-500 fill-mode-both"
               style={{ animationDelay: `${idx * 75}ms` }}
             >

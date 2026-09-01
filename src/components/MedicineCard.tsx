@@ -9,14 +9,20 @@ import { useCart } from "@/context/CartContext";
 export default function MedicineCard({ medicine }: { medicine: Medicine }) {
   const { addToCart } = useCart();
   
+  if (!medicine) return null;
+  
+  const price = Number(medicine.price) || 0;
+  const discountPrice = medicine.discountPrice != null ? Number(medicine.discountPrice) : price;
+  const hasDiscount = discountPrice < price && price > 0;
+  
   return (
     <div className="group bg-white rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 overflow-hidden flex flex-col h-full relative">
       
       {/* Badges */}
       <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
-        {medicine.discountPrice < medicine.price && (
+        {hasDiscount && (
           <span className="bg-red-500 text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow-sm tracking-wide">
-            {Math.round(((medicine.price - medicine.discountPrice) / medicine.price) * 100)}% OFF
+            {Math.round(((price - discountPrice) / price) * 100)}% OFF
           </span>
         )}
         {medicine.prescriptionRequired && (
@@ -46,7 +52,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-2">
            <Link href="/products" className="text-[11px] text-primary font-bold uppercase tracking-wider hover:text-primary-dark transition-colors">
-             {medicine.category}
+             {medicine.category && typeof medicine.category === 'object' ? medicine.category.name : medicine.category}
            </Link>
            <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded text-amber-600">
              <Star className="h-3 w-3 fill-amber-500 text-amber-500" />
@@ -64,9 +70,9 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
           <div>
             <div className="text-[11px] text-slate-400 font-medium mb-0.5 uppercase tracking-wider">Price</div>
             <div className="flex items-baseline gap-2">
-              <div className="text-lg font-black text-slate-900">${medicine.discountPrice.toFixed(2)}</div>
-              {medicine.discountPrice < medicine.price && (
-                <div className="text-xs font-semibold text-slate-400 line-through">${medicine.price.toFixed(2)}</div>
+              <div className="text-lg font-black text-slate-900">${discountPrice.toFixed(2)}</div>
+              {hasDiscount && (
+                <div className="text-xs font-semibold text-slate-400 line-through">${price.toFixed(2)}</div>
               )}
             </div>
           </div>

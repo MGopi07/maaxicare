@@ -2,15 +2,25 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Search, ShoppingCart, Heart, User, Menu, X } from "lucide-react";
+import { Search, ShoppingCart, Heart, User, Menu, X, Phone } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { cartCount } = useCart();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -24,8 +34,8 @@ export default function Navbar() {
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-4">
-            <div className="flex items-center gap-8 xl:gap-12">
-              {/* Logo */}
+            {/* Logo (Left) */}
+            <div className="flex-1 flex items-center justify-start">
               <Link href="/" className="flex items-center gap-2 group shrink-0">
                 <Image 
                   src="/images/logo.png" 
@@ -37,38 +47,52 @@ export default function Navbar() {
                   priority 
                 />
               </Link>
-
-              {/* Desktop Navigation */}
-              <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium shrink-0">
-                {navLinks.map((link) => {
-                  const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
-                  return (
-                    <Link 
-                      key={link.name}
-                      href={link.href} 
-                      className={`transition-colors ${
-                        isActive ? "text-primary font-bold" : "text-slate-600 hover:text-primary"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
-              </nav>
             </div>
 
-            {/* Search Bar (Desktop) */}
-            <div className="hidden lg:flex flex-1 max-w-md mx-8 relative">
-              <input
-                type="text"
-                placeholder="Search for medicines, health products..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-full border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-              />
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            </div>
+            {/* Desktop Navigation (Center) */}
+            <nav className="hidden lg:flex items-center justify-center gap-8 xl:gap-12 font-medium">
+              {navLinks.map((link) => {
+                const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                return (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    className={`transition-all duration-300 relative px-2 py-1 ${
+                      isActive ? "text-primary font-bold" : "text-slate-600 hover:text-primary"
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-primary rounded-full"></span>
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
 
-            {/* Actions */}
-            <div className="flex items-center gap-4 lg:gap-6">
+            {/* Actions (Right) */}
+            <div className="flex-1 flex items-center justify-end gap-4 lg:gap-6">
+              
+              <Link 
+                href="/contact" 
+                className="hidden lg:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-bold shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5"
+              >
+                <Phone className="h-4 w-4" />
+                Contact Us
+              </Link>
+              {/* Temporarily hidden Search Bar
+              <form onSubmit={handleSearch} className="hidden lg:flex w-full max-w-xs relative">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="w-full pl-10 pr-4 py-2 rounded-full border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              </form>
+              */}
+              {/* Temporarily hidden as requested
               <Link href="/wishlist" className="hidden sm:flex flex-col items-center text-slate-600 hover:text-primary transition-colors">
                 <Heart className="h-5 w-5" />
                 <span className="text-[10px] font-medium mt-1">Wishlist</span>
@@ -90,6 +114,7 @@ export default function Navbar() {
                 <User className="h-4 w-4" />
                 <span>Login</span>
               </Link>
+              */}
 
               {/* Mobile Menu Toggle */}
               <button 
@@ -103,14 +128,16 @@ export default function Navbar() {
 
           {/* Mobile Search Bar (Visible only on mobile) */}
           <div className="lg:hidden pb-4 pt-2">
-            <div className="relative">
+            <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
                 placeholder="Search medicines..."
                 className="w-full pl-10 pr-4 py-2.5 rounded-full border border-slate-300 bg-slate-50 focus:outline-none focus:border-primary transition-colors"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-            </div>
+            </form>
           </div>
         </div>
       </header>

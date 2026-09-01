@@ -10,13 +10,31 @@ import TrustBadges from "@/components/TrustBadges";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 
-// Mock Data Imports
-import categories from "@/data/categories.json";
-import medicines from "@/data/medicines.json";
-import brands from "@/data/brands.json";
-import healthTips from "@/data/healthTips.json";
+import { api } from "@/services/api";
 
-export default function Home() {
+// Mock Data Imports
+import brands from "@/data/brands.json";
+
+export default async function Home() {
+  let categories: any[] = [];
+  let medicines: any[] = [];
+  let healthTips: any[] = [];
+
+  try {
+    const [catsRes, medsRes, blogsRes] = await Promise.all([
+      api.categories.getAll(),
+      api.products.getAll(),
+      api.blogs.getAll()
+    ]);
+    
+    // Safely extract array data whether it's wrapped in { data: [] } or not
+    categories = catsRes?.data || catsRes || [];
+    medicines = medsRes?.data || medsRes || [];
+    healthTips = blogsRes?.data || blogsRes || [];
+  } catch (err) {
+    console.error("Failed to fetch data for homepage", err);
+  }
+
   return (
     <div>
       <HeroBanner />

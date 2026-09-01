@@ -225,7 +225,10 @@ export default function CheckoutPage() {
               <h3 className="font-bold text-slate-900 mb-4 pb-4 border-b border-slate-100">Order Summary ({cart.length} items)</h3>
               
               <div className="space-y-4 mb-6 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
-                {cart.map((item) => (
+                {cart.map((item) => {
+                  const itemPrice = Number(item.medicine.price) || 0;
+                  const itemDiscountPrice = item.medicine.discountPrice != null ? Number(item.medicine.discountPrice) : itemPrice;
+                  return (
                   <div key={item.medicine.id} className="flex gap-3">
                     <div className="relative h-12 w-12 bg-slate-50 rounded-lg flex-shrink-0 border border-slate-100">
                       <Image src={item.medicine.image} alt={item.medicine.name} fill sizes="80px" className="object-contain p-1" />
@@ -235,10 +238,10 @@ export default function CheckoutPage() {
                       <p className="text-xs text-slate-500">Qty: {item.quantity}</p>
                     </div>
                     <div className="text-sm font-bold text-slate-900">
-                      ${(item.medicine.discountPrice * item.quantity).toFixed(2)}
+                      ${(itemDiscountPrice * item.quantity).toFixed(2)}
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
               
               <div className="space-y-3 text-sm text-slate-600 mb-4 pt-4 border-t border-slate-100">

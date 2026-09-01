@@ -45,7 +45,10 @@ export default function CartPage() {
               </div>
               
               <div className="space-y-6">
-                {cart.map((item) => (
+                {cart.map((item) => {
+                  const itemPrice = Number(item.medicine.price) || 0;
+                  const itemDiscountPrice = item.medicine.discountPrice != null ? Number(item.medicine.discountPrice) : itemPrice;
+                  return (
                   <div key={item.medicine.id} className="flex flex-col md:grid md:grid-cols-12 items-center gap-4 pb-6 border-b border-slate-100 last:border-0 last:pb-0">
                     
                     {/* Product */}
@@ -57,7 +60,7 @@ export default function CartPage() {
                         <Link href={`/products/${item.medicine.slug}`} className="font-bold text-slate-900 hover:text-primary transition-colors line-clamp-1 mb-1">
                           {item.medicine.name}
                         </Link>
-                        <p className="text-xs text-slate-500 mb-2">{item.medicine.category}</p>
+                        <p className="text-xs text-slate-500 mb-2">{item.medicine.category && typeof item.medicine.category === 'object' ? item.medicine.category.name : item.medicine.category}</p>
                         <button 
                           onClick={() => removeFromCart(item.medicine.id)}
                           className="text-xs text-red-500 font-medium flex items-center gap-1 hover:text-red-700 transition-colors"
@@ -70,7 +73,7 @@ export default function CartPage() {
                     {/* Price */}
                     <div className="col-span-2 text-center w-full md:w-auto flex justify-between md:block">
                       <span className="md:hidden text-slate-500 font-medium">Price:</span>
-                      <span className="font-bold text-slate-900">${item.medicine.discountPrice.toFixed(2)}</span>
+                      <span className="font-bold text-slate-900">${itemDiscountPrice.toFixed(2)}</span>
                     </div>
                     
                     {/* Quantity */}
@@ -95,10 +98,10 @@ export default function CartPage() {
                     {/* Item Total */}
                     <div className="col-span-2 text-right w-full md:w-auto flex justify-between md:block">
                       <span className="md:hidden text-slate-500 font-medium">Total:</span>
-                      <span className="font-bold text-primary">${(item.medicine.discountPrice * item.quantity).toFixed(2)}</span>
+                      <span className="font-bold text-primary">${(itemDiscountPrice * item.quantity).toFixed(2)}</span>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             </div>
           </div>
