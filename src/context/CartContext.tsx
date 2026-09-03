@@ -72,7 +72,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const clearCart = () => setCart([]);
 
   const cartTotal = cart.reduce(
-    (total, item) => total + item.medicine.discountPrice * item.quantity,
+    (total, item) => {
+      const p = Number(item.medicine.price) || 0;
+      const opRaw = item.medicine.offer_price ?? item.medicine.discount_price ?? item.medicine.discountPrice;
+      const dp = opRaw != null ? Number(opRaw) : p;
+      return total + dp * item.quantity;
+    },
     0
   );
 

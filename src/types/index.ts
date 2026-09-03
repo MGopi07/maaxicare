@@ -6,7 +6,9 @@ export interface Medicine {
   categoryId: string;
   category: string | any;
   price: number;
-  discountPrice: number;
+  discountPrice?: number;
+  discount_price?: number;
+  offer_price?: number;
   stock: number;
   rating: number;
   reviewsCount: number;

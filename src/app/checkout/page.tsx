@@ -227,7 +227,8 @@ export default function CheckoutPage() {
               <div className="space-y-4 mb-6 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
                 {cart.map((item) => {
                   const itemPrice = Number(item.medicine.price) || 0;
-                  const itemDiscountPrice = item.medicine.discountPrice != null ? Number(item.medicine.discountPrice) : itemPrice;
+                  const offerPriceRaw = item.medicine.offer_price ?? item.medicine.discount_price ?? item.medicine.discountPrice;
+                  const itemDiscountPrice = offerPriceRaw != null ? Number(offerPriceRaw) : itemPrice;
                   return (
                   <div key={item.medicine.id} className="flex gap-3">
                     <div className="relative h-12 w-12 bg-slate-50 rounded-lg flex-shrink-0 border border-slate-100">

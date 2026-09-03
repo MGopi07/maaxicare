@@ -12,7 +12,8 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
   if (!medicine) return null;
   
   const price = Number(medicine.price) || 0;
-  const discountPrice = medicine.discountPrice != null ? Number(medicine.discountPrice) : price;
+  const offerPriceRaw = medicine.offer_price ?? medicine.discount_price ?? medicine.discountPrice;
+  const discountPrice = offerPriceRaw != null ? Number(offerPriceRaw) : price;
   const hasDiscount = discountPrice < price && price > 0;
   
   return (

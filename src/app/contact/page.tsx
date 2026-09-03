@@ -1,6 +1,54 @@
+"use client";
+
+import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { api } from "../../services/api";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "Order Inquiry",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      await api.contact.submit({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      });
+      setSubmitStatus({ type: 'success', message: 'Your message has been sent successfully. We will get back to you soon!' });
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        subject: "Order Inquiry",
+        message: ""
+      });
+    } catch (error: any) {
+      setSubmitStatus({ type: 'error', message: error.message || 'Failed to send message. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="bg-slate-50 min-h-screen py-16">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
@@ -70,36 +118,41 @@ export default function ContactPage() {
           <div className="lg:col-span-7">
             <div className="bg-white p-8 lg:p-12 rounded-3xl border border-slate-100 shadow-sm">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
-              <form className="space-y-6">
+              {submitStatus && (
+                <div className={`p-4 mb-6 rounded-xl text-sm font-medium ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                  {submitStatus.message}
+                </div>
+              )}
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="John" />
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                    <input name="name" value={formData.name} onChange={handleChange} required type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="John Doe" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="Doe" />
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                    <input name="phone" value={formData.phone} onChange={handleChange} required type="tel" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="+1 (555) 000-0000" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                  <input type="email" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="john@example.com" />
+                  <input name="email" value={formData.email} onChange={handleChange} required type="email" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="john@example.com" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-white">
-                    <option>Order Inquiry</option>
-                    <option>Product Information</option>
-                    <option>Returns & Refunds</option>
-                    <option>Other</option>
+                  <select name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-white">
+                    <option value="Order Inquiry">Order Inquiry</option>
+                    <option value="Product Information">Product Information</option>
+                    <option value="Returns & Refunds">Returns & Refunds</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                  <textarea rows={5} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="How can we help you?"></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="How can we help you?"></textarea>
                 </div>
-                <button type="button" className="w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-xl font-bold shadow-md transition-all">
-                  Send Message
+                <button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-xl font-bold shadow-md transition-all disabled:opacity-70 disabled:cursor-not-allowed">
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>

@@ -27,6 +27,9 @@ function ProductsContent() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     initialCategory ? [initialCategory] : []
   );
+  const [minPrice, setMinPrice] = useState<number | ''>('');
+  const [maxPrice, setMaxPrice] = useState<number | ''>('');
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
   useEffect(() => {
     Promise.all([api.products.getAll(), api.categories.getAll()])
@@ -46,6 +49,16 @@ function ProductsContent() {
     );
   };
 
+  const handleBrandChange = (brandName: string) => {
+    setSelectedBrands(prev => 
+      prev.includes(brandName) 
+        ? prev.filter(name => name !== brandName)
+        : [...prev, brandName]
+    );
+  };
+
+  const dynamicBrands = Array.from(new Set(medicines.map(m => m.manufacturer).filter(Boolean)));
+
   const filteredMedicines = medicines.filter(med => {
     // text search filter
     if (searchTerm && !med.name.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -58,6 +71,20 @@ function ProductsContent() {
         return false;
       }
     }
+    // brand filter
+    if (selectedBrands.length > 0) {
+      if (!med.manufacturer || !selectedBrands.includes(med.manufacturer)) {
+        return false;
+      }
+    }
+    // price filter
+    const p = Number(med.price) || 0;
+    const opRaw = med.offer_price ?? med.discount_price ?? med.discountPrice;
+    const dp = opRaw != null ? Number(opRaw) : p;
+    
+    if (minPrice !== '' && dp < Number(minPrice)) return false;
+    if (maxPrice !== '' && dp > Number(maxPrice)) return false;
+
     return true;
   });
 
@@ -130,11 +157,22 @@ function ProductsContent() {
                   Price Range <ChevronDown className="h-4 w-4" />
                 </h3>
                 <div className="space-y-4">
-                  <input type="range" min="0" max="1000" className="w-full accent-primary" />
                   <div className="flex items-center justify-between gap-4">
-                    <input type="text" placeholder="Min" className="w-full px-3 py-1.5 border border-slate-200 rounded-md text-sm" />
+                    <input 
+                      type="number" 
+                      placeholder="Min" 
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value === '' ? '' : Number(e.target.value))}
+                      className="w-full px-3 py-1.5 border border-slate-200 rounded-md text-sm" 
+                    />
                     <span className="text-slate-400">-</span>
-                    <input type="text" placeholder="Max" className="w-full px-3 py-1.5 border border-slate-200 rounded-md text-sm" />
+                    <input 
+                      type="number" 
+                      placeholder="Max" 
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value === '' ? '' : Number(e.target.value))}
+                      className="w-full px-3 py-1.5 border border-slate-200 rounded-md text-sm" 
+                    />
                   </div>
                 </div>
               </div>
@@ -144,16 +182,24 @@ function ProductsContent() {
                   Brands <ChevronDown className="h-4 w-4" />
                 </h3>
                 <div className="space-y-3">
-                  {brands.map((brand) => (
-                    <label key={brand.id} className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" className="rounded border-slate-300 text-primary focus:ring-primary" />
-                      <span className="text-sm text-slate-600 hover:text-primary">{brand.name}</span>
+                  {dynamicBrands.map((brand, i) => (
+                    <label key={i} className="flex items-center gap-3 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={selectedBrands.includes(brand as string)}
+                        onChange={() => handleBrandChange(brand as string)}
+                        className="rounded border-slate-300 text-primary focus:ring-primary" 
+                      />
+                      <span className="text-sm text-slate-600 hover:text-primary">{brand as string}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              <button className="w-full bg-primary/10 text-primary font-semibold py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+              <button 
+                onClick={() => setIsMobileFilterOpen(false)}
+                className="w-full bg-primary/10 text-primary font-semibold py-2 rounded-lg hover:bg-primary hover:text-white transition-colors"
+              >
                 Apply Filters
               </button>
             </div>

@@ -47,7 +47,8 @@ export default function CartPage() {
               <div className="space-y-6">
                 {cart.map((item) => {
                   const itemPrice = Number(item.medicine.price) || 0;
-                  const itemDiscountPrice = item.medicine.discountPrice != null ? Number(item.medicine.discountPrice) : itemPrice;
+                  const offerPriceRaw = item.medicine.offer_price ?? item.medicine.discount_price ?? item.medicine.discountPrice;
+                  const itemDiscountPrice = offerPriceRaw != null ? Number(offerPriceRaw) : itemPrice;
                   return (
                   <div key={item.medicine.id} className="flex flex-col md:grid md:grid-cols-12 items-center gap-4 pb-6 border-b border-slate-100 last:border-0 last:pb-0">
                     
