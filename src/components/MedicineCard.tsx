@@ -33,9 +33,11 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
         )}
       </div>
       
+      {/* Temporarily commented out as per request
       <button className="absolute top-3 right-3 z-20 p-2.5 bg-white/90 backdrop-blur-md rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all duration-300 shadow-sm opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0">
         <Heart className="h-4 w-4" />
       </button>
+      */}
 
       {/* Image */}
       <Link href={`/products/${medicine.slug}`} className="relative h-56 w-full bg-slate-50 overflow-hidden block">
@@ -77,6 +79,7 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
               )}
             </div>
           </div>
+          {/* Temporarily commented out as per request
           <button 
             onClick={(e) => { e.preventDefault(); addToCart(medicine); }}
             className="group/btn h-10 w-10 shrink-0 bg-primary text-white hover:bg-primary-dark rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1"
@@ -84,6 +87,13 @@ export default function MedicineCard({ medicine }: { medicine: Medicine }) {
           >
             <ShoppingCart className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />
           </button>
+          */}
+          <Link 
+            href={`/products/${medicine.slug}`}
+            className="group/btn h-10 px-4 shrink-0 bg-primary text-white text-sm font-bold hover:bg-primary-dark rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1"
+          >
+            Buy Now
+          </Link>
         </div>
       </div>
     </div>
