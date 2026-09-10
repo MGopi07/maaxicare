@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className="bg-slate-50 min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-900 pt-24 pb-32 text-white">
+      <section className="relative overflow-hidden bg-slate-900 pt-16 pb-20 text-white">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/2 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-gradient-to-b from-primary/20 to-transparent blur-3xl" />
           <div className="absolute -bottom-1/2 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-t from-secondary/20 to-transparent blur-3xl" />
@@ -19,7 +19,7 @@ export default function AboutPage() {
               <Sparkles className="w-4 h-4 text-secondary" />
               <span className="text-sm font-semibold tracking-wider uppercase text-slate-200">Our Journey</span>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 leading-tight tracking-tight break-words">
               Redefining <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-secondary">Healthcare</span> Accessibility
             </h1>
             <p className="text-xl lg:text-2xl text-slate-300 leading-relaxed font-light mb-12">
@@ -30,7 +30,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section overlapping Hero */}
-      <section className="relative z-20 -mt-16 mb-24 container mx-auto px-4 lg:px-8 max-w-6xl">
+      <section className="relative z-20 -mt-10 mb-16 container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="bg-white/80 backdrop-blur-xl p-8 lg:p-12 rounded-3xl shadow-2xl border border-white grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-slate-100">
           <div className="text-center px-4 hover:-translate-y-1 transition-transform duration-300">
             <h4 className="text-4xl lg:text-5xl font-black text-primary mb-2">2M+</h4>
@@ -52,7 +52,7 @@ export default function AboutPage() {
       </section>
       
       {/* Story Section */}
-      <section className="container mx-auto px-4 lg:px-8 max-w-7xl mb-32">
+      <section className="container mx-auto px-4 lg:px-8 max-w-7xl mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[3rem] transform -rotate-3 scale-105 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-100" />
@@ -61,6 +61,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80" 
                 alt="Pharmacy Team" 
                 fill 
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80" />
@@ -75,6 +76,7 @@ export default function AboutPage() {
                   src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" 
                   alt="Laboratory" 
                   fill 
+                  sizes="192px"
                   className="object-cover"
                 />
                </div>
@@ -118,7 +120,7 @@ export default function AboutPage() {
       </section>
       
       {/* Values Section */}
-      <section className="bg-slate-900 py-32 text-white relative overflow-hidden">
+      <section className="bg-slate-900 py-16 text-white relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl" />
@@ -175,7 +177,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 container mx-auto px-4 lg:px-8 max-w-5xl">
+      <section className="py-16 container mx-auto px-4 lg:px-8 max-w-5xl">
          <div className="bg-gradient-to-br from-primary to-blue-700 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl mix-blend-overlay group-hover:scale-110 transition-transform duration-1000"></div>
             <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl mix-blend-overlay group-hover:scale-110 transition-transform duration-1000"></div>

@@ -43,10 +43,20 @@ export default async function Home() {
       {/* Shop by Category */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">Shop by Category</h2>
-            <Link href="/products" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all">
-              View All <ArrowRight className="h-4 w-4" />
+          <div className="flex flex-row items-end justify-between mb-8 md:mb-10 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] md:text-xs font-bold tracking-wider uppercase mb-2 md:mb-3 border border-primary/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Explore
+              </div>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Shop by <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Category</span>
+              </h2>
+            </div>
+            <Link href="/products" className="group inline-flex items-center gap-1.5 md:gap-2 text-primary font-bold bg-primary/5 hover:bg-primary/10 px-4 md:px-6 py-2 md:py-3 rounded-full transition-all duration-300 border border-primary/10 hover:border-primary/20 hover:shadow-md hover:shadow-primary/5 text-sm md:text-base shrink-0 mb-1 md:mb-0">
+              <span className="hidden sm:inline">View All Categories</span>
+              <span className="sm:hidden">View All</span>
+              <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
@@ -126,8 +136,17 @@ export default async function Home() {
       <section className="py-16 bg-gradient-to-r from-primary/5 via-white to-primary/5 border-y border-primary/10 overflow-hidden relative">
         <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         <div className="absolute top-1/2 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="container mx-auto px-4 lg:px-8 mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 text-center">Trusted Partners</h2>
+        <div className="container mx-auto px-4 lg:px-8 mb-12 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4 border border-primary/20 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Our Network
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Trusted Partners</span>
+          </h2>
+          <p className="text-slate-500 text-sm md:text-base mt-4 max-w-lg mx-auto font-medium">
+            We collaborate with the world's leading healthcare brands to bring you genuine, high-quality products.
+          </p>
         </div>
 
         {/* Infinite Slider */}
@@ -148,10 +167,19 @@ export default async function Home() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight">Health Tips & Articles</h2>
-            <Link href="/blog" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all">
-              Read More <ArrowRight className="h-4 w-4" />
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold tracking-wider uppercase mb-4 border border-white/20 backdrop-blur-sm shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Our Blog
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
+                Health Tips & <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-300">Articles</span>
+              </h2>
+            </div>
+            <Link href="/blog" className="group inline-flex items-center gap-2 text-white font-bold bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm shrink-0">
+              View All Articles
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

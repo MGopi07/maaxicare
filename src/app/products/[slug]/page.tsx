@@ -174,7 +174,7 @@ export default function MedicineDetailsPage({ params }: { params: Promise<{ slug
               </div>
               
               {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 bg-slate-50 p-6 rounded-2xl">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 bg-gradient-to-r from-primary/5 via-white to-secondary/5 border border-primary/10 shadow-sm p-6 rounded-2xl">
                 <div className="flex flex-col items-center text-center gap-2">
                   <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center text-secondary shadow-sm">
                     <ShieldCheck className="h-5 w-5" />

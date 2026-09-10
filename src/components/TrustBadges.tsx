@@ -30,23 +30,27 @@ export default function TrustBadges() {
   ];
 
   return (
-    <section className="py-6 sm:py-20 bg-white sm:bg-gradient-to-b sm:from-white sm:to-slate-50/50 relative overflow-hidden">
-      {/* Subtle dotted background pattern - desktop only */}
-      <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.4]"></div>
+    <section className="py-6 sm:py-12 bg-gradient-to-br from-slate-50 via-white to-primary/5 relative overflow-hidden">
+      {/* Decorative blurred blobs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
       
-      <div className="container mx-auto px-2 sm:px-8 relative z-10">
-        <div className="grid grid-cols-3 gap-2 sm:gap-8 max-w-5xl mx-auto">
+      {/* Subtle dotted background pattern - desktop only */}
+      <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(theme(colors.primary.DEFAULT)_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.04] pointer-events-none"></div>
+      
+      <div className="container mx-auto px-4 sm:px-8 relative z-10">
+        <div className="grid grid-cols-3 gap-3 sm:gap-10 max-w-6xl mx-auto">
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
               <div 
                 key={index} 
-                className="flex flex-col items-center text-center group cursor-pointer 
-                           bg-transparent sm:bg-white/80 sm:backdrop-blur-sm sm:rounded-[2rem] 
-                           p-1 sm:p-10 
-                           shadow-none sm:shadow-[0_2px_20px_rgb(0,0,0,0.04)] sm:hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] 
+                className="flex flex-col items-center text-center group cursor-pointer relative
+                           bg-transparent sm:bg-white sm:rounded-[2.5rem] 
+                           p-2 sm:p-12 
+                           shadow-none sm:shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] 
                            transition-all duration-500 
-                           border-none sm:border sm:border-slate-100 sm:hover:-translate-y-2 sm:hover:border-slate-200"
+                           border-none sm:border sm:border-slate-100 sm:hover:-translate-y-3 sm:hover:border-primary/20"
               >
                 {/* Icon Container */}
                 <div 

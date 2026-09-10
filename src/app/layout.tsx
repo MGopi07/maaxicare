@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Maaxicare | Your Trusted Online Pharmacy",
   description: "Get genuine medicines, vitamins, and healthcare essentials delivered to your doorstep.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

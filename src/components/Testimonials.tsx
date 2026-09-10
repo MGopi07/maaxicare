@@ -65,8 +65,14 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6 text-center md:text-left">
           <div className="max-w-2xl mx-auto md:mx-0">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">What Our Customers Say</h2>
-            <p className="text-slate-500">Don't just take our word for it. Join thousands of satisfied customers who trust us with their healthcare needs.</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4 border border-primary/20 shadow-sm mx-auto md:mx-0">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Testimonials
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-4">
+              What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Customers</span> Say
+            </h2>
+            <p className="text-slate-500 text-base md:text-lg font-medium">Don't just take our word for it. Join thousands of satisfied customers who trust us with their healthcare needs.</p>
           </div>
           <div className="hidden md:flex gap-3 shrink-0">
             <button 
